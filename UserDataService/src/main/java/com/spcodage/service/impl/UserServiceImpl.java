@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -20,6 +21,9 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     public UserDto createUser(UserDto userDto) {
+          if(userRepository.existsByEmail(userDto.getEmail())){
+              throw  new ResourceNotFoundException("User With given Email: "+userDto.getEmail()+" Already exist");
+          }
         User user = userMapper.toUserEntity(userDto);
         User savedUser = userRepository.save(user);
         return userMapper.toUserDto(savedUser);
@@ -51,7 +55,8 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setAbout(userDto.getAbout());
         user.setPassword(userDto.getPassword());
-        return userMapper.toUserDto(user);
+        User savedUser = userRepository.save(user);
+        return userMapper.toUserDto(savedUser);
     }
 
     @Override
@@ -63,6 +68,12 @@ public class UserServiceImpl implements UserService {
         }
         user.setIsDeleted(true);
         userRepository.save(user);
+    }
+
+    @Override
+    public String changePassword(String password) {
+
+        return "";
     }
 
 

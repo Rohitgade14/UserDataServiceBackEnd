@@ -1,18 +1,19 @@
 package com.spcodage.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
-public class UserDto {
-    private Integer userId;
-    private String name;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class LoginResDto {
     private String email;
-    private String about;
     private String password;
+    private String token;
+
 }

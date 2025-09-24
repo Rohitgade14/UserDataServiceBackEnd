@@ -11,5 +11,7 @@ public interface UserService {
      UserDto getUser(Integer userId);
      UserDto updateUser(UserDto userDto,Integer userId);
      void deleteUser(Integer userId);
+     String changePassword(String password);
+
 
 }

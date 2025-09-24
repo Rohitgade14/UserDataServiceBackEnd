@@ -22,19 +22,7 @@ public class UserController {
 
     private final  UserService userService;
 
-    @PostMapping
-    public ResponseEntity<StandardResponse<UserDto>> create(@RequestBody UserDto userDto) {
-        UserDto user = userService.createUser(userDto);
-        return ResponseEntity.status(CREATED).body(
-                StandardResponse.<UserDto>builder()
-                        .statusCode(CREATED)
-                        .status(STATUS_SUCCESS)
-                        .message(CREATE)
-                        .data(user)
-                        .build()
-        );
 
-    }
 
       @GetMapping
        public  ResponseEntity<StandardResponse<List<UserDto>>> getAllUsers(){
@@ -87,6 +75,8 @@ public class UserController {
                                          .build()
                           );
            }
+
+
 
 
 

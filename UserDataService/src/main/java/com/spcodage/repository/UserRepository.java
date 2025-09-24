@@ -16,6 +16,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     // for single User is Delted not shown
     Optional<User> findByUserIdAndIsDeletedFalse(Integer userId);
-
+    // for login created custom method findByEmail
+    Optional<User> findByEmail(String email);
+    Boolean existsByEmail(String email);
 
 }
