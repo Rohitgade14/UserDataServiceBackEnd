@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class AuthResToken {
+public class AuthRes {
    private String accessToken;
    private String  refreshToken;
-  // private String Role;
    private UserDto user;
 
 

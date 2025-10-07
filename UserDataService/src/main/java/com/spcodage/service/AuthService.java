@@ -1,8 +1,14 @@
 package com.spcodage.service;
 
-import com.spcodage.dtos.LoginReqDto;
-import com.spcodage.dtos.LoginResDto;
 
-public interface LoginService {
-    LoginResDto loginReq(LoginReqDto loginReqDto);
+
+import com.spcodage.dtos.AuthReq;
+import com.spcodage.dtos.AuthRes;
+import com.spcodage.dtos.UserDto;
+
+public interface AuthService {
+    UserDto createUser(UserDto userDto);
+    AuthRes loginReq(AuthReq authReq);
+
+
 }

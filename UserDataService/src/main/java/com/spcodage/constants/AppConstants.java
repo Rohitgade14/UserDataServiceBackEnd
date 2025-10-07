@@ -39,6 +39,7 @@ public class AppConstants {
            public static  final  String FETHCHE_ALL="All Users Fetched  Succesfully";
            public static  final  String LOGIN="Login Succesfully";
            public static  final  String FAIL="Login fAILED";
+           public  static  final String FORBIDDEN="You Dont Have Acess";
 
        }
 }

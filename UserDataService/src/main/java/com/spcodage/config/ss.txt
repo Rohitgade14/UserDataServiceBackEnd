@@ -1,0 +1,36 @@
+//
+////public Collection//<? extends GrantedAuthority> getAuthorities() {
+////    return user.getRoles().stream()
+////            .collect(Collectors.toSet()) // avoid modifying the original set
+////            .stream()
+////            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
+////            .collect(Collectors.toList());
+//////        return user.getRoles()
+//////                .stream()
+//////                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
+//////                .collect(Collectors.toList());
+
+
+
+
+
+
+
+
+//package com.spcodage.config;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.web.servlet.config.annotation.CorsRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//@Configuration
+//public class CorsConfig implements WebMvcConfigurer {
+//
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        // Apply CORS only for the /api paths
+//        registry.addMapping("/api/**")
+//                .allowedOrigins("http://localhost:4200") // Frontend URL
+//                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+//                .allowedHeaders("*")
+//                .allowCredentials(true);
+//    }
+//}

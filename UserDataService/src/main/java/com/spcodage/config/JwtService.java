@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class JwtService1 {
+public class JwtService {
 
         private static final String SECRET_KEY = "YXNzc3NoaGRhc3Nzc2hoZGFzc3Nzc2hoZGFzc3Nzc2hoZGE=";
         private static final long ACCESS_TOKEN_EXPIRATION = 5 * 60 * 1000; // 5 min
@@ -76,14 +76,14 @@ public class JwtService1 {
 
 
         // Token validation with username check
-        public boolean validateToken(String token, String username) {
-            try {
-                String tokenUsername = getUsernameFromToken(token);
-                return tokenUsername.equals(username) && !isTokenExpired(token);
-            } catch (JwtException ex) {
-                return false;
-            }
-        }
+//        public boolean validateToken(String token, String username) {
+//            try {
+//                String tokenUsername = getUsernameFromToken(token);
+//                return tokenUsername.equals(username) && !isTokenExpired(token);
+//            } catch (JwtException ex) {
+//                return false;
+//            }
+//        }
 
         // Check if token expired
         private boolean isTokenExpired(String token) {

@@ -1,0 +1,3 @@
+ userDto.getRoles().add(roleMapper.toRoleDto(userRole));
+        userDto.getDesignations().add(designationMapper.toDesignationDto(designation));
+        userDto.getPermissions().add(permissionMapper.toPermissionDto(permission));

@@ -1,0 +1,33 @@
+    @PostMapping("/login")
+    public ResponseEntity<StandardResponse<LoginResDto>> login(@RequestBody LoginReqDto loginReqDto) {
+        LoginResDto loginRes = loginService.loginReq(loginReqDto);
+        return ResponseEntity.status(OK).body(
+                StandardResponse.<LoginResDto>builder()
+                        .statusCode(OK)
+                        .status(STATUS_SUCCESS)
+                        .message(LOGIN)
+                        .data(loginRes)
+                        .build()
+        );
+    }
+
+
+        public LoginResDto loginReq(LoginReqDto loginReqDto) {
+            User user = userRepository.findByEmail(loginReqDto.getEmail())
+                    .orElseThrow(() -> new ResourceNotFoundException("Email id is Incorrect: " + loginReqDto.getEmail()));
+            if(!user.getPassword().equals(loginReqDto.getPassword())){
+                  throw new ResourceNotFoundException("password is incorrect"+loginReqDto.getPassword());
+            }
+
+            return  LoginResDto.builder()
+                    .email(user.getEmail())
+                   // .password(user.getPassword())
+                    .token("dummy token")
+                    .build();   // with Builder
+
+
+    //        return new LoginResDto(
+    //                user.getEmail(),
+    //                null, //
+    //                "dummy-jwt-token" //  without Builder
+    //        );

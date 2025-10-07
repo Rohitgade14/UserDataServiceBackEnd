@@ -1,0 +1,2 @@
+Unauthorized: failed to lazily initialize a collection of role: com.spcodage.entities.User.roles: could not initialize proxy - no Session
+use entity graph in repo

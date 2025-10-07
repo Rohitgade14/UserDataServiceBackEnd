@@ -1,0 +1,89 @@
+/   , expression = "java(mapRolesFromNames(userDto.getRoles()))"
+//    // Convert Role Entity Set → Set<String>
+//    default Set<String> mapRolesToNames(Set<Role> roles) {
+//        if (roles == null) return new HashSet<>();
+//        return roles.stream()
+//                .map(Role::getRoleName)
+//                .collect(Collectors.toSet());
+//    }
+
+
+//, expression = "java(mapRolesToNames(user.getRoles()))"
+//    // Convert Set<String> Role Names → Set<Role>
+//    default Set<Role> mapRolesFromNames(Set<String> roleNames) {
+//        if (roleNames == null) return new HashSet<>();
+//        return roleNames.stream()
+//                .map(name -> {
+//                    Role role = new Role();
+//                    role.setRoleName(name);
+//                    return role;
+//                })
+//                .collect(Collectors.toSet());
+//    }
+----------
+    //   add after any one isdeletd
+//    @Mapping(target = "isDeleted", ignore = true)
+--------------
+//package com.spcodage.mappers;
+//
+//import com.spcodage.entities.Role;
+//import org.mapstruct.Named;
+//
+//import java.util.Set;
+//import java.util.stream.Collectors;
+//
+//public class RoleMapperHelper {
+//
+//    @Named("mapRolesFromDto")
+//    public static Set<Role> mapRolesFromDto(Set<String> roleNames) {
+//        if (roleNames == null) return null;
+//        return roleNames.stream()
+//                .map(name -> {
+//                    Role role = new Role();
+//                    role.setRoleName(name);
+//                    return role;
+//                })
+//                .collect(Collectors.toSet());
+//    }
+//
+//    @Named("mapRolesToDto")
+//    public static Set<String> mapRolesToDto(Set<Role> roles) {
+//        if (roles == null) return null;
+//        return roles.stream()
+//                .map(Role::getRoleName)
+//                .collect(Collectors.toSet());
+//    }
+//}
+---------
+//package com.spcodage.entities;
+//
+//import jakarta.persistence.*;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//import java.time.LocalDateTime;
+//
+//@Entity
+//@Table(name = "password_history")
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Data
+//public class UpdatePassword {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer passwordId;
+//    @Column(nullable = false)
+//    private String oldPassword;
+//    @Column(nullable = false)
+//    private LocalDateTime changedAt = LocalDateTime.now();
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "userId" , nullable = false)
+//    private User user;
+//
+//
+//
+//}
+
+

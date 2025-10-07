@@ -1,0 +1,71 @@
+package com.spcodage.dtos;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginReqDto {
+    private String email;
+    private  String password;
+
+
+}
+package com.spcodage.dtos;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class LoginResDto {
+    private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private  String password;
+    private String token;
+
+}
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public LoginResDto loginReq(LoginReqDto loginReqDto) {
+
+        User user = userRepository.findByEmailAndIsDeletedFalse(loginReqDto.getEmail())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Email Id does not exist: " + loginReqDto.getEmail()));
+        log.info("DB Pass: {}", user.getPassword());
+        log.info("DB Pass {}:", loginReqDto.getPassword());
+        if (!user.getPassword().equals(loginReqDto.getPassword())) {
+            throw new ResourceNotFoundException("Password is incorrect");
+        }
+
+        return LoginResDto.builder()
+                .email(user.getEmail())
+                .token("dummy token")
+                .build();
+    }
+
+
+
+        @PostMapping("/login")
+        public ResponseEntity<StandardResponse<LoginResDto>> normalLogin(@RequestBody LoginReqDto loginReqDto) {
+            LoginResDto loginRes = authService.loginReq(loginReqDto);
+            return ResponseEntity.status(OK).body(
+                    StandardResponse.<LoginResDto>builder()
+                            .statusCode(OK)
+                            .status(STATUS_SUCCESS)
+                            .message(LOGIN)
+                            .data(loginRes)
+                            .build()
+            );
+        }

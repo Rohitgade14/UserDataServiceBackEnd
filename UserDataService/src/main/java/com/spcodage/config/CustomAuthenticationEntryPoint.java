@@ -3,16 +3,19 @@ package com.spcodage.config;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Component
 @Slf4j
-public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
+//@ResponseStatus(HttpStatus.UNAUTHORIZED)
+public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     // this class is for 401 error
     @Override
@@ -36,4 +39,6 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
         response.getWriter().write(json);
     }
+
+
 }

@@ -8,7 +8,7 @@ public class UserDataServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserDataServiceApplication.class, args);
-        System.out.println("hii");
+        System.out.println("Application Start");
 	}
 
 }
